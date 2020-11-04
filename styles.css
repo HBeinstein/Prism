@@ -4,10 +4,12 @@ body {
 
 .sketch-api {
   width: 50%;
-  float: left;
+  position: absolute;
+  left: 0;
 }
 
 #canvas {
-  float: right;
-  width: 50%;
+  /* width: 50%; */
+  position: absolute;
+  right: 0;
 }
