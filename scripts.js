@@ -66,7 +66,7 @@ const img = new Image();
 
 img.src = "https://i.pinimg.com/564x/f3/52/8c/f3528c650c4b2a162bb853c040bbbba5.jpg"; //Example img 2
 
-  const pattern = ctx.createPattern(img, 'repeat');
+const pattern = ctx.createPattern(img, 'repeat');
 
 animate();
 
