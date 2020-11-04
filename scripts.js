@@ -64,9 +64,12 @@ function animate() {
 const img = new Image();
 // img.src = "https://media.istockphoto.com/vectors/modern-trendy-abstract-shapes-in-pastel-colors-scandinavian-clean-vector-id1190577091?b=1&k=6&m=1190577091&s=612x612&w=0&h=tTQpM21MUcoH0maJlKYZY60Ov7BZH9ksXyorRU5XJWM="; //Example img
 
-img.src = "https://i.pinimg.com/564x/f3/52/8c/f3528c650c4b2a162bb853c040bbbba5.jpg"; //Example img 2
+img.src = "./IMG/sample1.jpg"; //Example img 2
 
-const pattern = ctx.createPattern(img, 'repeat');
+let pattern;
+img.onload = function() {
+  pattern = ctx.createPattern(img, 'repeat');
+  animate();
+}
 
-animate();
 

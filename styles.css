@@ -1,3 +1,13 @@
 body {
   background-color: rgb(172, 215, 221);
 }
+
+.sketch-api {
+  width: 50%;
+  float: left;
+}
+
+#canvas {
+  float: right;
+  width: 50%;
+}
