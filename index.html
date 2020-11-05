@@ -9,14 +9,28 @@
   <title>Kaleidoscope</title>
 </head>
 <body>
-  <img src="./IMG/sample1.jpg" id="sample-1" style="display:none">
   <sketch-container></sketch-container>
+  <div id="sketch-toolbar">
+    <button id="select"><span class="sketch-icon-select"></span> Select </button>
+    <button id="pencil"><span class="sketch-icon-pencil"></span> Pencil </button>
+    <button id="paintbrush"><span class="sketch-icon-paintbrush"></span> Paintbrush </button>
+    <button id="circle"><span class="sketch-icon-circle"></span> Circle </button>
+    <button id="ring"><span class="sketch-icon-ring"></span> Ring </button>
+    <button id="triangle"><span class="sketch-icon-triangle"></span> Triangle </button>
+    <button id="square"><span class="sketch-icon-square"></span> Square </button>
+    <button id="rectangle"><span class="sketch-icon-rectangle"></span> Rectangle </button>
+  </div>
+
   <canvas id="canvas"></canvas>
+  <div class="kaleidoscope-toolbar">
+    <input type="range" min="4" max="10" value="6" class="slider" id="mirror-slider">
+  </div>
   
   <script src="sketch/babelHelpers.js"></script>
   <script src="sketch/min/sketch-config.min.js?2020.0.2"></script>
   <script src="sketch/min/sketch-api.min.js?2020.0.2"></script>
   <script src="sketch/min/app.min.js?2020.0.2"></script>
   <script src="scripts.js"></script>
+  <script src="sketchToolbar.js"></script>
 </body>
 </html>

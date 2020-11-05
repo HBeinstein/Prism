@@ -1,17 +1,3 @@
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-let w = canvas.width = window.innerHeight;
-let h = canvas.height = window.innerHeight;
-const {PI,sin,cos} = Math;
-
-const segments = 6; //Edit # of mirrors
-
-const offset = {x: 200, y: 50}; //Changes what part of image is shown --> Maybe use scroll bar control to edit this in app?
-
-ctx.beginPath();
-ctx.arc(370, 370, 350, 0, 360);
-ctx.clip();
-
 function animate() {
   const radius = w/2 + h/2;
   const mirrorAngle = (PI*2) / segments;
@@ -29,7 +15,7 @@ function animate() {
   for(let i=0; i<segments; i++) {
         //Non-mirrored segment
         ctx.translate(w/2, h/2); //move to center of canvas
-        ctx.rotate(i * mirrorAngle); //angle path depending on segment angle
+        ctx.rotate(i * mirrorAngle); //angle path depending on segment angle, multiplied by segment #
         ctx.translate(offset.x, offset.y); 
         ctx.beginPath();
         ctx.moveTo(x1-offset.x, y1-offset.y); //Draw triangle
@@ -56,10 +42,36 @@ function animate() {
   }
 
   offset.x = (offset.x + 0.75) % img.width;
-  offset.y = (offset.y + 0.25) % img.height; //Moves image before re-rendering/animation
+  offset.y = (offset.y + 0.25) % img.height; //Moves image before re-rendering/animation, CHANGE THIS TO CHANGE SPEED OF ANIMATION
 
-  requestAnimationFrame(animate);
+
+  // requestAnimationFrame(animate);
 }
+
+function updateSegments() {
+  segments = document.getElementById('mirror-slider').value;
+  animate();
+};
+
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let segments = document.getElementById('mirror-slider').value; //Edit # of mirrors
+const segmentSlider = document.getElementById('mirror-slider');
+
+segmentSlider.addEventListener('input', updateSegments);
+
+let w = canvas.width = window.innerHeight;
+let h = canvas.height = window.innerHeight;
+const {PI,sin,cos} = Math;
+
+// const segments = 6; //Edit # of mirrors
+
+const offset = {x: 200, y: 50}; //Changes what part of image is shown --> Maybe use scroll bar control to edit this in app?
+
+ctx.beginPath();
+ctx.arc(370, 370, 350, 0, 360);
+ctx.clip();
 
 const img = new Image();
 // img.src = "https://media.istockphoto.com/vectors/modern-trendy-abstract-shapes-in-pastel-colors-scandinavian-clean-vector-id1190577091?b=1&k=6&m=1190577091&s=612x612&w=0&h=tTQpM21MUcoH0maJlKYZY60Ov7BZH9ksXyorRU5XJWM="; //Example img
@@ -71,5 +83,6 @@ img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');
   animate();
 }
+
 
 
