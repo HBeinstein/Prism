@@ -42,10 +42,10 @@ function updateRender() {
     ctx.resetTransform();
   }
 
-  offset.x = (offset.x + 0.75) % img.width;
-  offset.y = (offset.y + 0.25) % img.height; //Moves image before re-rendering/animation, CHANGE THIS TO CHANGE SPEED OF ANIMATION
-
-
+  if(animating) {
+    offset.x = (offset.x + 0.75) % img.width;
+    offset.y = (offset.y + 0.25) % img.height; //Moves image before re-rendering/animation, CHANGE THIS TO CHANGE SPEED OF ANIMATION
+  }
   // requestAnimationFrame(updateRender);
 }
 
@@ -57,10 +57,12 @@ function updateSegments() {
   }
 };
 
-// function updateImgView() {
-//   offsetViewVal = document.getElementById('view-slider').value;
-//   updateRender();
-// };
+function updateImgView() {
+  offsetViewVal = document.getElementById('view-slider').value;
+  if(!animating) {
+    updateRender();
+  }
+};
 
 
 const canvas = document.getElementById('canvas');
