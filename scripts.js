@@ -45,8 +45,8 @@ function updateRender() {
   if(animating) {
     offset.x = (offset.x + 0.75) % img.width;
     offset.y = (offset.y + 0.25) % img.height; //Moves image before re-rendering/animation, CHANGE THIS TO CHANGE SPEED OF ANIMATION
+    requestAnimationFrame(updateRender);
   }
-  // requestAnimationFrame(updateRender);
 }
 
 
@@ -64,14 +64,17 @@ function updateImgView() {
   }
 };
 
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let w = canvas.width = window.innerHeight;
 let h = canvas.height = window.innerHeight;
 const {PI,sin,cos} = Math;
 
-let animating = false;
+let animating = true;
+const animateButton = document.getElementById('animate-button').onclick = function() {
+  animating = !animating;
+  updateRender();
+};
 
 let segments = document.getElementById('mirror-slider').value;
 const segmentSlider = document.getElementById('mirror-slider');
