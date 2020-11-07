@@ -1,38 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="sketch/min/sketch-api.min.css?2020.0.2" rel="stylesheet">
-  <link href="sketch/min/app.min.css?2020.0.2" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link href='sketch/min/sketch-api.min.css?2020.0.2' rel='stylesheet'>
+  <link href='sketch/min/app.min.css?2020.0.2' rel='stylesheet'>
+  <link rel='stylesheet' href='styles.css'>
   <title>Kaleidoscope</title>
 </head>
 <body>
   <sketch-container></sketch-container>
-  <div id="sketch-toolbar">
-    <button id="select"><span class="sketch-icon-select"></span> Select </button>
-    <button id="pencil"><span class="sketch-icon-pencil"></span> Pencil </button>
-    <button id="paintbrush"><span class="sketch-icon-paintbrush"></span> Paintbrush </button>
-    <button id="circle"><span class="sketch-icon-circle"></span> Circle </button>
-    <button id="ring"><span class="sketch-icon-ring"></span> Ring </button>
-    <button id="triangle"><span class="sketch-icon-triangle"></span> Triangle </button>
-    <button id="square"><span class="sketch-icon-square"></span> Square </button>
-    <button id="rectangle"><span class="sketch-icon-rectangle"></span> Rectangle </button>
-  </div>
+  <ul id='sketch-toolbar'>
+    <li id='select-tool' class='sketch-toolbar-category'> Select Tool
+      <ul>
+        <li id='select'> Select </li>
+      </ul>
+    </li>
 
-  <canvas id="canvas"></canvas>
-  <div class="kaleidoscope-toolbar">
-    <button id="animate-button"> Play </button>
-    <input type="range" min="4" max="10" value="6" class="slider" id="mirror-slider">
-    <input type="range" min="1" max="100" value="50" class="slider" id="view-slider">
+    <li id='brush-tool' class='sketch-toolbar-category'> Brush Tool
+      <ul>
+        <li id='pencil'> Pencil </li>
+        <li id='paintbrush'> Paintbrush </li>
+      </ul>
+    </li>
+
+    <li id='shape-tool' class='sketch-toolbar-category'> Shape Tool
+      <ul>
+        <li id='circle'> Circle </li>
+        <li id='ring'> Ring </li>
+        <li id='triangle'> Triangle </li>
+        <li id='square'> Square </li>
+        <li id='rectangle'> Rectangle </li>
+      </ul>
+    </li>
+  </ul>
+
+  <canvas id='canvas'></canvas>
+  <div class='kaleidoscope-toolbar'>
+    <button id='animate-button'> Play </button>
+    <input type='range' min='4' max='10' value='6' class='slider' id='mirror-slider'>
+    <input type='range' min='1' max='500' value='250' step='5' class='slider' id='view-slider'>
+    <input type='range' min='0' max='3' value='1' step='1/2' class='slider' id='speed-slider'>
   </div>
   
-  <script src="sketch/babelHelpers.js"></script>
-  <script src="sketch/min/sketch-config.min.js?2020.0.2"></script>
-  <script src="sketch/min/sketch-api.min.js?2020.0.2"></script>
-  <script src="sketch/min/app.min.js?2020.0.2"></script>
-  <script src="scripts.js"></script>
-  <script src="sketchToolbar.js"></script>
+  <script src='sketch/babelHelpers.js'></script>
+  <script src='sketch/min/sketch-config.min.js?2020.0.2'></script>
+  <script src='sketch/min/sketch-api.min.js?2020.0.2'></script>
+  <script src='sketch/min/app.min.js?2020.0.2'></script>
+  <script src='scripts.js'></script>
+  <script src='sketchToolbar.js'></script>
 </body>
 </html>
