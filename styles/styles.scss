@@ -1,10 +1,11 @@
-@import './_kaleidoscopeCanvas.scss';
-@import './_sketchCanvas.scss';
-@import './sketchToolbar.scss';
+@import './_kaleidoscopeCanvas';
+@import './_sketchCanvas';
+@import './sketchToolbar';
 
 $background-color: rgb(162, 215, 221);
 
-
+$mainButtonHover: #8DE1D2;
+$secondaryButtonHover: #00DDAA;
 
 body {
   background-color: $background-color;

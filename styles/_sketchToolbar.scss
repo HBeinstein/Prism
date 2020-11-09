@@ -1,4 +1,5 @@
 /* Dropup Sketch.IO menu */
+
 #sketch-toolbar {
   position: fixed;
   bottom: 0;
@@ -25,9 +26,9 @@
 }
 
 #sketch-toolbar-menu li:hover {
-  color: #8DE1D2;
+  color: $mainButtonHover;
 }
 
 .sketch-toolbar-category li:hover {
-  color: #00DDAA !important;
+  color: $secondaryButtonHover !important;
 }
