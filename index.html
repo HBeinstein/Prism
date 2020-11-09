@@ -5,35 +5,40 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <link href='sketch/min/sketch-api.min.css?2020.0.2' rel='stylesheet'>
   <link href='sketch/min/app.min.css?2020.0.2' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
   <link rel='stylesheet' href='styles.css'>
   <title>Kaleidoscope</title>
 </head>
 <body>
   <sketch-container></sketch-container>
-  <ul id='sketch-toolbar'>
-    <li id='select-tool' class='sketch-toolbar-category'> Select Tool
-      <ul>
-        <li id='select'> Select </li>
-      </ul>
-    </li>
+  <div id='sketch-toolbar'> 
+    <ul id='sketch-toolbar-menu'>
+      <li id='select-tool' class='sketch-toolbar-category'> Select Tool 
+        <ul class='sketch-toolbar-sub-category'>
+          <li id='select'> Select </li>
+        </ul>
+      </li>
 
-    <li id='brush-tool' class='sketch-toolbar-category'> Brush Tool
-      <ul>
-        <li id='pencil'> Pencil </li>
-        <li id='paintbrush'> Paintbrush </li>
-      </ul>
-    </li>
+      <li id='brush-tool' class='sketch-toolbar-category'> Select Brush 
+        <ul class='sketch-toolbar-sub-category'>
+          <li id='pencil'> Pencil </li>
+          <li id='paintbrush'> Paintbrush </li>
+        </ul>
+      </li>
 
-    <li id='shape-tool' class='sketch-toolbar-category'> Shape Tool
-      <ul>
-        <li id='circle'> Circle </li>
-        <li id='ring'> Ring </li>
-        <li id='triangle'> Triangle </li>
-        <li id='square'> Square </li>
-        <li id='rectangle'> Rectangle </li>
-      </ul>
-    </li>
-  </ul>
+      <li id='shape-tool' class='sketch-toolbar-category'> Select Shape 
+        <ul class='sketch-toolbar-sub-category'>
+          <li id='circle'> Circle </li>
+          <li id='ring'> Ring </li>
+          <li id='triangle'> Triangle </li>
+          <li id='square'> Square </li>
+          <li id='rectangle'> Rectangle </li>
+        </ul>
+      </li>
+
+      <input type='text' class="color-picker"/>
+    </ul>
+  </div>
 
   <canvas id='canvas'></canvas>
   <div class='kaleidoscope-toolbar'>
@@ -43,10 +48,13 @@
     <input type='range' min='0' max='3' value='1' step='1/2' class='slider' id='speed-slider'>
   </div>
   
+  <script src="./assets/jquery-3.5.1.js"></script>
   <script src='sketch/babelHelpers.js'></script>
   <script src='sketch/min/sketch-config.min.js?2020.0.2'></script>
   <script src='sketch/min/sketch-api.min.js?2020.0.2'></script>
   <script src='sketch/min/app.min.js?2020.0.2'></script>
+  <script src='spectrum.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
   <script src='scripts.js'></script>
   <script src='sketchToolbar.js'></script>
 </body>

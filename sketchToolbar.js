@@ -48,3 +48,8 @@ Gesture.on($rectangleButton, 'click', () => {
   sketch.setTool('rectangle');
   sketch.configTool('rectangle', {stroke: 'none', fill: '#FF5951'});
 });
+
+//Color-picker
+$(".color-picker").spectrum({
+    color: "#f00",
+});

@@ -15,10 +15,10 @@ body {
   right: 0;
 }
 
-#sketch-toolbar {
+/* #sketch-toolbar {
   position: absolute;
   bottom: 0;
-}
+} */
 
 .kaleidoscope-toolbar {
   position: absolute;
@@ -28,16 +28,34 @@ body {
 
 /* Dropup Sketch.IO menu */
 #sketch-toolbar {
-  position: relative;
-  margin-top: 40%;
-  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  margin: 0;
 }
 
-.sketch-toolbar-category {
+.sketch-toolbar-category, .sketch-toolbar-sub-category > li {
+  display: inline;
+}
+
+.sketch-toolbar-sub-category {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+#sketch-toolbar-menu li ul.sketch-toolbar-sub-category {
   display: none;
+}
+
+#sketch-toolbar-menu li:hover ul.sketch-toolbar-sub-category {
+  display: block;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  bottom: 5px;
+}
+
+#sketch-toolbar-menu li:hover {
+  color: #8DE1D2;
+}
+
+.sketch-toolbar-category li:hover {
+  color: #00DDAA !important;
 }
