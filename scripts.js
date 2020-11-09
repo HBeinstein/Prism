@@ -112,7 +112,7 @@ ctx.arc(370, 370, 350, 0, 360);
 ctx.clip();
 
 const img = new Image();
-img.src = "./IMG/sample3.jpg"; 
+img.src = "./assets/IMG/sample2.jpg"; 
 let pattern;
 img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');

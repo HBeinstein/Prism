@@ -1,0 +1,24 @@
+{
+  "name": "kaleidoscope-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SketchIO/intern-project-kaleidoscope.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SketchIO/intern-project-kaleidoscope/issues"
+  },
+  "homepage": "https://github.com/SketchIO/intern-project-kaleidoscope#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.29.0"
+  }
+}
