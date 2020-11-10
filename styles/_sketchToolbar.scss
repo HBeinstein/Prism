@@ -1,3 +1,13 @@
+@mixin mainButtonHover {
+  color: #8DE1D2;
+  cursor: pointer;
+} 
+
+@mixin secondaryButtonHover {
+  color: #00DDAA !important;
+  cursor: pointer;
+} 
+
 #sketch-toolbar {
   position: fixed;
   bottom: 0;
@@ -24,9 +34,9 @@
 }
 
 #sketch-toolbar-menu li:hover {
-  color: $mainButtonHover;
+  @include mainButtonHover;
 }
 
 .sketch-toolbar-category li:hover {
-  color: $secondaryButtonHover !important;
+  @include secondaryButtonHover;
 }

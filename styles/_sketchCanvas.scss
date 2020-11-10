@@ -1,0 +1,14 @@
+@mixin position-left {
+  position: absolute;
+  left: 0;
+}
+
+#sketch-canvas {
+  @include position-left;
+  width: 50%;
+}
+
+.sketch-toolbar {
+  @include position-left;
+  bottom: 0;
+}

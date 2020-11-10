@@ -1,8 +1,43 @@
-//Toolbar
+//Color-picker
+$("#color-picker").spectrum({
+    color: "#00DDAA",
+    showInitial: true,
+    showInput: true,
+    palette: ['#FF5951', '#87D4FE', '#00DDAA'],
+    showPalette: true,
+    showPaletteOnly: true,
+    showSelectionPalette: true,
+    preferredFormat: "hex"
+});
+
+// let currentColor;
+// const colorPicker = document.getElementById('color-picker');
+
+// colorPicker.addEventListener('change', function () {
+//   currentColor = colorPicker.spectrum('get').toHexString();
+//   console.log(currentColor); 
+// });
+
+//SketchAPI
 const sketch = global.sketch;
 const Gesture = global.Gesture;
 const dom = sketch.dom;
 
+function getCurrentColor() {
+  return $('#color-picker').spectrum('get').toHexString();
+} 
+
+function setCurrentTool(tool, strokeOrFill) {
+  sketch.setTool(tool);
+  let color = getCurrentColor();
+  if(strokeOrFill === "stroke") {
+    sketch.configTool(tool, {stroke: color});
+  } else {
+    sketch.configTool(tool, {stroke: "none", fill: color});
+  }
+}
+
+//SketchAPI Toolbar buttons
 const $selectButton = dom.$('#select');
 Gesture.on($selectButton, 'click', () => {
 	sketch.setTool('select');
@@ -10,46 +45,35 @@ Gesture.on($selectButton, 'click', () => {
 
 const $pencilButton = dom.$('#pencil');
 Gesture.on($pencilButton, 'click', () => {
-	sketch.setTool('pencil');
+  setCurrentTool('pencil', 'stroke')
 });
 
 const $paintbrushButton = dom.$('#paintbrush');
 Gesture.on($paintbrushButton, 'click', () => {
-  sketch.setTool('paintbrush');
-  sketch.configTool('paintbrush', {stroke: '#87D4FE'});
+  setCurrentTool('paintbrush', 'stroke');
 });
 
 const $circleButton = dom.$('#circle');
 Gesture.on($circleButton, 'click', () => {
-  sketch.setTool('ellipse');
-  sketch.configTool('ellipse', {stroke: 'none', fill: '#00DDAA'});
+  setCurrentTool('ellipse', 'fill');
 });
 
 const $ringButton = dom.$('#ring');
 Gesture.on($ringButton, 'click', () => {
-  sketch.setTool('ring');
-  sketch.configTool('ring', {stroke: 'none', fill: '#8DE1D2'});
+  setCurrentTool('ring', 'fill');
 });
 
 const $triangleButton = dom.$('#triangle');
 Gesture.on($triangleButton, 'click', () => {
-  sketch.setTool('triangle');
-  sketch.configTool('triangle', {stroke: 'none', fill: '#87D4FE'});
+  setCurrentTool('triangle', 'fill');
 });
 
 const $squareButton = dom.$('#square');
 Gesture.on($squareButton, 'click', () => {
-  sketch.setTool('square');
-  sketch.configTool('square', {stroke: 'none', fill: '#9DA0F0'});
+  setCurrentTool('square', 'fill');
 });
 
 const $rectangleButton = dom.$('#rectangle');
 Gesture.on($rectangleButton, 'click', () => {
-  sketch.setTool('rectangle');
-  sketch.configTool('rectangle', {stroke: 'none', fill: '#FF5951'});
-});
-
-//Color-picker
-$(".color-picker").spectrum({
-    color: "#f00",
-});
+  setCurrentTool('rectangle', 'fill');
+})

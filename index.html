@@ -10,7 +10,7 @@
   <title>Kaleidoscope</title>
 </head>
 <body>
-  <sketch-container></sketch-container>
+  <sketch-container id='sketch-canvas'></sketch-container>
   <div id='sketch-toolbar'> 
     <ul id='sketch-toolbar-menu'>
       <li id='select-tool' class='sketch-toolbar-category'> Select Tool 
@@ -36,7 +36,7 @@
         </ul>
       </li>
 
-      <input type='text' class="color-picker"/>
+      <input type='text' id="color-picker"/>
     </ul>
   </div>
 
@@ -52,8 +52,7 @@
   <script src='sketch/babelHelpers.js'></script>
   <script src='sketch/min/sketch-config.min.js?2020.0.2'></script>
   <script src='sketch/min/sketch-api.min.js?2020.0.2'></script>
-  <script src='sketch/min/app.min.js?2020.0.2'></script>
-  <script src='spectrum.js'></script>
+  <script src='sketch/min/app.min.js?2020.0.2'></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
   <script src='./js/scripts.js'></script>
   <script src='./js/sketchToolbar.js'></script>
