@@ -1,0 +1,13 @@
+@mixin position-right {
+  position: absolute;
+  right: 0;
+}
+
+#canvas {
+  @include position-right;
+}
+
+.kaleidoscope-toolbar {
+  @include position-right;
+  bottom: 0;
+}
