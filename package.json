@@ -18,7 +18,5 @@
   },
   "homepage": "https://github.com/SketchIO/intern-project-kaleidoscope#readme",
   "dependencies": {},
-  "devDependencies": {
-    "sass": "^1.29.0"
-  }
+  "devDependencies": {}
 }
