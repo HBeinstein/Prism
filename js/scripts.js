@@ -125,6 +125,3 @@ img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');
   updateRender();
 }
-
-
-
