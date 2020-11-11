@@ -3,11 +3,19 @@
   right: 0;
 }
 
-#canvas {
+#kaleidoscope-canvas-container {
   @include position-right;
+  top: 0;
+  bottom: 0;
+  width: 50%;
 }
 
+#canvas {}
+
 .kaleidoscope-toolbar {
-  @include position-right;
+  position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
 }

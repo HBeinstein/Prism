@@ -71,9 +71,11 @@ function updateSpeed() {
 };
 
 const canvas = document.getElementById('canvas');
+const $canvasContainer = document.querySelector('#kaleidoscope-canvas-container')
+const canvasDimensions = $canvasContainer.clientWidth
 const ctx = canvas.getContext('2d');
-let w = canvas.width = window.innerHeight;
-let h = canvas.height = window.innerHeight;
+let w = canvas.width = canvasDimensions;
+let h = canvas.height = canvasDimensions;
 const {PI,sin,cos} = Math;
 
 let animating = true;
@@ -107,8 +109,13 @@ let animationSpeed = document.getElementById('speed-slider').value;
 const speedSlider = document.getElementById('speed-slider');
 speedSlider.addEventListener('input', updateSpeed);
 
+// We're dynamically setting the kaleidoscope size based on the container's dimensions
+const kaleidoscopeSize = canvasDimensions / 2
 ctx.beginPath();
-ctx.arc(370, 370, 350, 0, 360);
+
+// TODO: Review: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc
+// CanvasRenderingContext2D.arc() angle values are defined in radians, not degrees
+ctx.arc(kaleidoscopeSize, kaleidoscopeSize, kaleidoscopeSize * 0.8, 0, 2 * PI);
 ctx.clip();
 
 const img = new Image();

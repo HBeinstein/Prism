@@ -1,13 +1,27 @@
+//SketchAPI
+const sketch = global.sketch;
+const Gesture = global.Gesture;
+const dom = sketch.dom;
+
 //Color-picker
+// TODO: Create an additional color picker so the stroke and fill can be set separately
+// We use the move event handler here to update the sketch layers when the color is changed.
+// The move event handler is specific to the spectrum library.
 $("#color-picker").spectrum({
     color: "#00DDAA",
     showInitial: true,
     showInput: true,
-    palette: ['#FF5951', '#87D4FE', '#00DDAA'],
+    palette: [
+      ['#FF5951', '#87D4FE', '#00DDAA']
+    ],
     showPalette: true,
     showPaletteOnly: true,
-    showSelectionPalette: true,
-    preferredFormat: "hex"
+    preferredFormat: "hex",
+    move: function(color) {
+      sketch.doc.configLayers({
+        stroke: color.toHexString()
+      })
+    }
 });
 
 // let currentColor;
@@ -15,13 +29,46 @@ $("#color-picker").spectrum({
 
 // colorPicker.addEventListener('change', function () {
 //   currentColor = colorPicker.spectrum('get').toHexString();
-//   console.log(currentColor); 
+//   console.log(currentColor);
 // });
 
-//SketchAPI
-const sketch = global.sketch;
-const Gesture = global.Gesture;
-const dom = sketch.dom;
+// bindSketchEvents() needs to be called at boot
+bindSketchEvents()
+
+/**
+ * bindSketchEvents()
+ *
+ * Since we're not using the app loader, sketch.doc.on isn't ready right away
+ * so we need to check for sketch.doc.on and if it doesn't exist, we wait for
+ * 250ms and try again. Once sketch.doc.on is defined then we can setup the
+ * event handler to update the kaleidoscope when history events occur.
+ */
+function bindSketchEvents() {
+  const doc = sketch.doc
+  if (typeof doc.on !== "undefined") {
+    doc.setBackground('white')
+    doc.on('change', async packet => {
+      if (packet.op === "HISTORY_STORE") {
+        await updateKaleidoscope()
+      }
+    })
+  } else {
+    setTimeout(bindSketchEvents, 250)
+  }
+}
+
+/**
+ * updateKaleidoscope()
+ *
+ * Saves the sketchCanvas and then creates a new pattern using the kaleidoscope
+ * canvas context.
+ */
+async function updateKaleidoscope() {
+  const sketchCanvas = await sketch.save.canvas()
+  const canvas = document.querySelector("#canvas")
+  const ctx = canvas.getContext('2d')
+  pattern = ctx.createPattern(sketchCanvas, 'repeat')
+}
 
 function getCurrentColor() {
   return $('#color-picker').spectrum('get').toHexString();

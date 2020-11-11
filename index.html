@@ -5,11 +5,13 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <link href='sketch/min/sketch-api.min.css?2020.0.2' rel='stylesheet'>
   <link href='sketch/min/app.min.css?2020.0.2' rel='stylesheet'>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css">
   <link rel='stylesheet' href='./styles/styles.css'>
   <title>Kaleidoscope</title>
 </head>
 <body>
+<!-- The sketch and kaleidoscope elements have been wrapped in containers for easier styling -->
+<div id="sketch-canvas-container">
   <sketch-container id='sketch-canvas'></sketch-container>
   <div id='sketch-toolbar'> 
     <ul id='sketch-toolbar-menu'>
@@ -39,7 +41,9 @@
       <input type='text' id="color-picker"/>
     </ul>
   </div>
+</div>
 
+<div id="kaleidoscope-canvas-container">
   <canvas id='canvas'></canvas>
   <div class='kaleidoscope-toolbar'>
     <button id='animate-button'> Play </button>
@@ -47,13 +51,14 @@
     <input type='range' min='1' max='500' value='250' step='5' class='slider' id='view-slider'>
     <input type='range' min='0' max='3' value='1' step='1/2' class='slider' id='speed-slider'>
   </div>
+</div>
   
   <script src="./assets/jquery-3.5.1.js"></script>
   <script src='sketch/babelHelpers.js'></script>
   <script src='sketch/min/sketch-config.min.js?2020.0.2'></script>
   <script src='sketch/min/sketch-api.min.js?2020.0.2'></script>
-  <script src='sketch/min/app.min.js?2020.0.2'></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+  <script src='sketch/min/app.min.js?2020.0.2'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <script src='./js/scripts.js'></script>
   <script src='./js/sketchToolbar.js'></script>
 </body>
