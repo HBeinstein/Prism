@@ -10,7 +10,9 @@
   width: 50%;
 }
 
-#canvas {}
+#canvas {
+  @include position-right;
+}
 
 .kaleidoscope-toolbar {
   position: absolute;
