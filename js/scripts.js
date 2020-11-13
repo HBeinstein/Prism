@@ -70,8 +70,9 @@ function updateSpeed() {
   }
 };
 
+//Kaleidoscope Canvas
 const canvas = document.getElementById('canvas');
-const $canvasContainer = document.querySelector('#kaleidoscope-canvas-container')
+const $canvasContainer = document.querySelector('#kaleidoscope-canvas-container');
 const canvasDimensions = $canvasContainer.clientWidth
 const ctx = canvas.getContext('2d');
 let w = canvas.width = canvasDimensions;
@@ -91,32 +92,38 @@ const animateButton = document.getElementById('animate-button').onclick = functi
   updateRender();
 };
 
-//Kaleidoscope Toolbar
-let segments = document.getElementById('mirror-slider').value;
-const segmentSlider = document.getElementById('mirror-slider');
-segmentSlider.addEventListener('input', updateSegments);
-
-let viewVal = document.getElementById('view-slider').value;
-const viewSlider = document.getElementById('view-slider');
-viewSlider.style.display = 'none';
-const offset = {
-  x: 500, 
-  y: 200
-};
-viewSlider.addEventListener('input', updateKaleidoscopeView);
-
-let animationSpeed = document.getElementById('speed-slider').value;
-const speedSlider = document.getElementById('speed-slider');
-speedSlider.addEventListener('input', updateSpeed);
-
-// We're dynamically setting the kaleidoscope size based on the container's dimensions
 const kaleidoscopeSize = canvasDimensions / 2
 ctx.beginPath();
 
-// TODO: Review: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc
-// CanvasRenderingContext2D.arc() angle values are defined in radians, not degrees
 ctx.arc(kaleidoscopeSize, kaleidoscopeSize, kaleidoscopeSize * 0.8, 0, 2 * PI);
 ctx.clip();
+
+//CONNECT SKETCHAPI TO KALEIDOSCOPE CANVAS
+// bindSketchEvents() needs to be called at boot
+bindSketchEvents()
+
+function bindSketchEvents() {
+  const doc = sketch.doc
+  if (typeof doc.on !== "undefined") {
+    doc.setBackground('#FFCC56')
+    doc.on('change', async packet => {
+      console.log(packet)
+      if (packet.op === "HISTORY_STORE") {
+        await updateKaleidoscope()
+      }
+    })
+  } else {
+    setTimeout(bindSketchEvents, 250)
+  }
+}
+
+async function updateKaleidoscope() {
+  const sketchCanvas = await sketch.save.canvas()
+  const canvas = document.querySelector("#canvas")
+  const ctx = canvas.getContext('2d')
+  pattern = ctx.createPattern(sketchCanvas, 'repeat')
+}
+
 
 const img = new Image();
 img.src = "./assets/IMG/sample2.jpg"; 

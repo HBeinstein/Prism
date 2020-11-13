@@ -1,9 +1,30 @@
 @import './_kaleidoscopeCanvas';
-@import './_sketchCanvas';
 @import './_sketchToolbar';
 
-$background-color: rgb(162, 215, 221);
+$background-color: rgb(249, 252, 246);
+$main-border: 40px solid white;
+
+@mixin position-left {
+  position: absolute;
+  left: 0;
+}
 
 body {
   background-color: $background-color;
+  border: $main-border;
+}
+
+#sketch-canvas-container {
+  @include position-left;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  border-left: $main-border;
+  border-top: $main-border;
+  border-bottom: $main-border;
+}
+
+.sketch-toolbar {
+  @include position-left;
+  bottom: 0;
 }
