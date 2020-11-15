@@ -105,7 +105,7 @@ bindSketchEvents()
 function bindSketchEvents() {
   const doc = sketch.doc
   if (typeof doc.on !== "undefined") {
-    doc.setBackground('#FFCC56')
+    doc.setBackground('#A7E7D9')
     doc.on('change', async packet => {
       console.log(packet)
       if (packet.op === "HISTORY_STORE") {

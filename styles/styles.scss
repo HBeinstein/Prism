@@ -11,7 +11,7 @@ $main-border: 40px solid white;
 
 body {
   background-color: $background-color;
-  border: $main-border;
+  // border: $main-border;
 }
 
 #sketch-canvas-container {
@@ -19,9 +19,9 @@ body {
   top: 0;
   bottom: 0;
   width: 50%;
-  border-left: $main-border;
-  border-top: $main-border;
-  border-bottom: $main-border;
+  // border-left: $main-border;
+  // border-top: $main-border;
+  // border-bottom: $main-border;
 }
 
 .sketch-toolbar {
