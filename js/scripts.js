@@ -1,3 +1,4 @@
+//KALEIDOSCOPE RENDERING FUNCTIONS
 function updateRender() {
   const radius = w/2 + h/2;
   const mirrorAngle = (PI*2) / segments;
