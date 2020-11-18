@@ -8,6 +8,11 @@
   cursor: pointer;
 } 
 
+.sketch-toolbar-menu {
+  display: flex;
+  flex-direction: column;
+}
+
 #sketch-toolbar {
   position: fixed;
   bottom: 0;

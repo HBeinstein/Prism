@@ -56,11 +56,17 @@
     </div>
 
     <!-- kaleidoscope toolbar -->
-    <div>
-      <div class='kaleidoscope-canvas-toolbar'>
-        <button id='animate-button'> Play </button>
-        <input type='range' min='4' max='10' value='6' class='slider' id='mirror-slider'>
-        <input type='range' min='1' max='500' value='250' step='5' class='slider' id='view-slider'>
+    <div id='kaleidoscope-canvas-toolbar'>
+      <button id='animate-button'> Play </button> <br>
+      <div class='slider-wrapper'>
+        <input type='range' label = 'mirrors' min='4' max='10' value='6' class='slider' id='mirror-slider'> <br>
+      </div>
+
+      <div class='slider-wrapper'>
+        <input type='range' min='1' max='500' value='250' step='5' class='slider' id='view-slider'> <br>
+      </div>
+
+      <div class='slider-wrapper'>
         <input type='range' min='0' max='3' value='1' step='1/2' class='slider' id='speed-slider'>
       </div>
     </div>
