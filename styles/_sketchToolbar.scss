@@ -1,12 +1,20 @@
+$background-color: #F6F2F2;
+$canvas-background-color: #C1E7FF;
+$sketch-menu-color: #1286E1;
+
 @mixin mainButtonHover {
-  color: #8DE1D2;
+  color: #050455;
   cursor: pointer;
 } 
 
 @mixin secondaryButtonHover {
-  color: #00DDAA !important;
+  color: #0f2e27 !important;
   cursor: pointer;
 } 
+
+#sketch-canvas-toolbar {
+  background-color: $sketch-menu-color;
+}
 
 .sketch-toolbar-menu {
   display: flex;
@@ -14,10 +22,8 @@
 }
 
 #sketch-toolbar {
-  position: fixed;
-  bottom: 0;
   margin: 0;
-  z-index: 1;
+  z-index: 10;
 }
 
 .sketch-toolbar-category, .sketch-toolbar-sub-category > li {
@@ -36,7 +42,8 @@
 #sketch-toolbar-menu li:hover ul.sketch-toolbar-sub-category {
   display: block;
   position: absolute;
-  bottom: 5px;
+  left: 25px;
+  top: 5px;
 }
 
 #sketch-toolbar-menu li:hover {

@@ -1,33 +1,16 @@
 @import './_kaleidoscopeToolbar';
 @import './_sketchToolbar';
 
-$background-color: rgb(249, 252, 246);
-$main-border: 40px solid white;
-
-@mixin position-left {
-  position: absolute;
-  left: 0;
-}
+$background-color: #F6F2F2;
+$canvas-background-color: #C1E7FF;
+$sketch-menu-color: #1286E1;
 
 body {
   background-color: $background-color;
-  // width: 100vw;
-}
-
-// input[type=range]{
-//   -webkit-appearance: none;
-// }
-
-#app-container {
-  display: grid;
-  grid-template-rows: 100vh;
-  grid-template-columns: 40px 50fr 50fr 40px;
-  border: 1px solid red;
-  #sketch-canvas-toolbar {
-    background-color: blue;
-    #sketch-toolbar {
-      bottom: 0;
-    }
+  #app-container {
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 40px 50fr 50fr 40px;
   }
 }
 

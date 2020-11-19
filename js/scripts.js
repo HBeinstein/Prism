@@ -1,4 +1,6 @@
-//KALEIDOSCOPE RENDERING FUNCTIONS
+//KALEIDSCOPE CANVAS
+
+//Function to update kaleidoscope rendering
 function updateRender() {
   const radius = w/2 + h/2;
   const mirrorAngle = (PI*2) / segments;
@@ -33,7 +35,7 @@ function updateRender() {
     ctx.scale(-1, 1);
     ctx.translate(offset.x, offset.y);
     ctx.beginPath();
-    ctx.moveTo(x1-offset.x, y1-offset.y); //Draw mirrored triangle
+    ctx.moveTo(x1-offset.x, y1-offset.y);
     ctx.lineTo(x2-offset.x, y2-offset.y);
     ctx.lineTo(x4-offset.x, y4-offset.y);
     ctx.lineTo(x1-offset.x, y1-offset.y);
@@ -44,11 +46,12 @@ function updateRender() {
 
   if(animating) {
     offset.x = (offset.x + 0.75 + animationSpeed) % img.width;
-    offset.y = (offset.y + 0.25 + animationSpeed) % img.height; //Moves image before re-rendering/animation, CHANGE THIS TO CHANGE SPEED OF ANIMATION
+    offset.y = (offset.y + 0.25 + animationSpeed) % img.height; 
     requestAnimationFrame(updateRender);
   }
 }
 
+//Updates kaleidoscope segments when slider is moved
 function updateSegments() {
   segments = document.getElementById('mirror-slider').value;
   if(!animating) {
@@ -56,7 +59,8 @@ function updateSegments() {
   }
 };
 
-function updateKaleidoscopeView() { //only shows when animation paused
+//Updates kaleidoscope view when slider is moved. Only available when animation is paused.
+function updateKaleidoscopeView() { 
   if(!animating){
     viewVal = document.getElementById('view-slider').value;
     offset.x = viewVal;
@@ -65,13 +69,14 @@ function updateKaleidoscopeView() { //only shows when animation paused
   }
 };
 
+//Updates kaleidoscope animation speed when slider is moved. Only available when animation is playing.
 function updateSpeed() {
   if(animating) {
     animationSpeed = parseInt(document.getElementById('speed-slider').value);
   }
 };
 
-//Kaleidoscope Canvas
+//Defines and draws initial kaleidoscope canvas
 const canvas = document.getElementById('canvas');
 const $canvasContainer = document.querySelector('#kaleidoscope-canvas-container');
 const canvasDimensions = $canvasContainer.clientWidth
@@ -81,17 +86,6 @@ let h = canvas.height = canvasDimensions;
 const {PI,sin,cos} = Math;
 
 let animating = true;
-const animateButton = document.getElementById('animate-button').onclick = function() {
-  animating = !animating;
-  if(animating) {
-    viewSlider.style.display = 'none';
-    speedSlider.style.display = 'inline';
-  } else {
-    viewSlider.style.display = 'inline';
-    speedSlider.style.display = 'none';
-  }
-  updateRender();
-};
 
 const kaleidoscopeSize = canvasDimensions / 2
 ctx.beginPath();
@@ -99,14 +93,22 @@ ctx.beginPath();
 ctx.arc(kaleidoscopeSize, kaleidoscopeSize, kaleidoscopeSize * 0.8, 0, 2 * PI);
 ctx.clip();
 
-//CONNECT SKETCHAPI TO KALEIDOSCOPE CANVAS
-// bindSketchEvents() needs to be called at boot
+const img = new Image();
+img.src = "./assets/IMG/sample2.jpg"; 
+let pattern;
+img.onload = function() {
+  pattern = ctx.createPattern(img, 'repeat');
+  updateRender();
+}
+
+//SKETCH API & KAlEIDOSCOPE INTERACTIONS
+//Connects SketchAPI to Kaleidoscope rendering. BindSketchEvents() needs to be called at boot. 
 bindSketchEvents()
 
 function bindSketchEvents() {
   const doc = sketch.doc
   if (typeof doc.on !== "undefined") {
-    doc.setBackground('#A7E7D9')
+    doc.setBackground('#C1E7FF')
     doc.on('change', async packet => {
       console.log(packet)
       if (packet.op === "HISTORY_STORE") {
@@ -123,13 +125,4 @@ async function updateKaleidoscope() {
   const canvas = document.querySelector("#canvas")
   const ctx = canvas.getContext('2d')
   pattern = ctx.createPattern(sketchCanvas, 'repeat')
-}
-
-
-const img = new Image();
-img.src = "./assets/IMG/sample2.jpg"; 
-let pattern;
-img.onload = function() {
-  pattern = ctx.createPattern(img, 'repeat');
-  updateRender();
 }
