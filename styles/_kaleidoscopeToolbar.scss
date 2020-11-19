@@ -1,17 +1,30 @@
 #kaleidoscope-canvas-toolbar {
   background-color: rgb(29, 29, 255);
+  border: 1px solid purple;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  .slider-wrapper {
-    display: inline-block;
-    height: 100px;
-    width: 100%;
-    padding: 0;
-  }
-  input  {
+  justify-content: center;
+  #input-container {
+    display: flex;
+    gap: 2rem;
     transform: rotate(90deg);
-    width: 100%;
-    transform-origin: 50%;
+    justify-content: space-evenly;
+    transform-origin: center left;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+  input {
+    width: 30vh;
+  }
+  button {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+  }
+  button:focus {
+    outline: 0;
   }
 }
