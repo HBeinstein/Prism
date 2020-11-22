@@ -79,7 +79,7 @@ function updateSpeed() {
 //Defines and draws initial kaleidoscope canvas
 const canvas = document.getElementById('canvas');
 const $canvasContainer = document.querySelector('#kaleidoscope-canvas-container');
-const canvasDimensions = $canvasContainer.clientWidth
+const canvasDimensions = $canvasContainer.clientWidth;
 const ctx = canvas.getContext('2d');
 let w = canvas.width = canvasDimensions;
 let h = canvas.height = canvasDimensions;
@@ -106,15 +106,26 @@ img.onload = function() {
 bindSketchEvents()
 
 function bindSketchEvents() {
-  const doc = sketch.doc
+  const doc = sketch.doc;
+  doc.handleResize = function () {
+    
+  };
+  // const docWidth = doc.pixelWidth;
+  console.log(doc);
   if (typeof doc.on !== "undefined") {
     doc.setBackground('#C1E7FF')
     doc.on('change', async packet => {
-      console.log(packet)
+      // console.log(packet)
       if (packet.op === "HISTORY_STORE") {
         await updateKaleidoscope()
       }
     })
+
+  // window.addEventListener('resize', (event) => {
+  //   console.log(event)
+  //   bindSketchEvents();
+  // })
+
   } else {
     setTimeout(bindSketchEvents, 250)
   }
@@ -125,4 +136,10 @@ async function updateKaleidoscope() {
   const canvas = document.querySelector("#canvas")
   const ctx = canvas.getContext('2d')
   pattern = ctx.createPattern(sketchCanvas, 'repeat')
+}
+
+//Resize function
+
+function onResize() {
+
 }

@@ -5,12 +5,32 @@ $background-color: #F6F2F2;
 $canvas-background-color: #C1E7FF;
 $sketch-menu-color: #1286E1;
 
+@mixin p {
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: $sketch-menu-color;
+} 
+
 body {
   background-color: $background-color;
   #app-container {
     display: grid;
     grid-template-rows: 100vh;
-    grid-template-columns: 40px 50fr 50fr 40px;
+    grid-template-columns: 40px 1fr 1fr 40px;
+    // #sketch-canvas-container {
+    //   display: flex;
+    //   align-content: center;
+    //   justify-items: center;
+    // }
+    #kaleidoscope-canvas-container {
+      background-color: $background-color;
+    }
+    #sketch-canvas-container {
+      .ps__rail-y {
+        display: none;
+      }
+    }
   }
 }
 

@@ -1,55 +1,76 @@
 $background-color: #F6F2F2;
 $canvas-background-color: #C1E7FF;
-$sketch-menu-color: #1286E1;
+$sketch-menu-background-color: #1286E1;
+$sketch-menu-icon-color:#C1E7FF;
 
-@mixin mainButtonHover {
-  color: #050455;
-  cursor: pointer;
+@mixin p {
+  font-family: 'helvetica-neue', sans-serif;
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: $sketch-menu-background-color;
 } 
 
-@mixin secondaryButtonHover {
-  color: #0f2e27 !important;
-  cursor: pointer;
-} 
-
-#sketch-canvas-toolbar {
-  background-color: $sketch-menu-color;
-}
-
-.sketch-toolbar-menu {
-  display: flex;
-  flex-direction: column;
+@mixin svg {
+  // box-sizing: border-box;
+  max-width: 100%;
+  padding: 15%;
+  margin: 0;
+  border: rgba(0,0,0,0);
+  fill: $background-color;
+  :hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
 }
 
 #sketch-toolbar {
-  margin: 0;
-  z-index: 10;
+  display: flex;
+  padding: 5px 0;
+  flex-direction: column;
+  align-content: center;
+  background-color: $sketch-menu-background-color;
+  #toolbar-top {
+    #select-tool-category {
+      svg {
+        @include svg;
+      }
+    }
+    #vector-tool-category {
+      svg {
+        @include svg;
+      }
+      .vector-tool-sub-category {
+        display: none;
+        z-index: 10;
+      }
+    }
+    #brush-tool-category {
+      svg {
+        @include svg;
+      }
+      .brush-tool-sub-category {
+        display: none;
+        z-index: 10;
+      }
+    }
+    #shape-tool-category {
+      svg {
+        @include svg;
+      }
+      .shape-tool-sub-category {
+        display: none;
+        z-index: 10;
+      }
+    }
+  }
+  #toolbar-bottom {
+    justify-self: flex-end;
+    position: absolute;
+    bottom: 2px;
+    left: 3.5px;
+  }
+  .color-picker {
+    margin: 15px 0;
+  }
 }
-
-.sketch-toolbar-category, .sketch-toolbar-sub-category > li {
-  display: inline;
-}
-
-.sketch-toolbar-sub-category {
-  list-style: none;
-  margin-bottom: 20px;
-}
-
-#sketch-toolbar-menu li ul.sketch-toolbar-sub-category {
-  display: none;
-}
-
-#sketch-toolbar-menu li:hover ul.sketch-toolbar-sub-category {
-  display: block;
-  position: absolute;
-  left: 25px;
-  top: 5px;
-}
-
-#sketch-toolbar-menu li:hover {
-  @include mainButtonHover;
-}
-
-.sketch-toolbar-category li:hover {
-  @include secondaryButtonHover;
-}
+  
