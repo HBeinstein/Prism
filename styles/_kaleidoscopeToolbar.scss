@@ -35,7 +35,7 @@ $sketch-menu-color: #1286E1;
   #input-container {
     display: flex;
     gap: 4rem;
-    transform: rotate(270deg) translateX(-32px); //Is there a better way than translate to get absolute vertical center?
+    transform: rotate(270deg) translateX(25px); //Is there a better way than translate to get absolute vertical center?
     justify-content: center;
     transform-origin: center left;
     margin-left: 50%;
@@ -48,7 +48,9 @@ $sketch-menu-color: #1286E1;
     font-size: .5rem;
   }
   #prism {
-    position: relative;
-    left: -4rem;
+    position: absolute;
+    bottom: 30px;
+    right: -2px;
+    transform: rotate(270deg);
   }
 }

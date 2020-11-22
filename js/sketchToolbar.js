@@ -80,7 +80,9 @@ Gesture.on($polygonButton, 'click', () => {
   setCurrentTool('regularPolygon');
 });
 
-//Sketch toolbar expandable menu 
+//Sketch toolbar expandable menu
+const selectToolButton = document.querySelector('#select-tool-button');
+
 const vectorToolButton = document.querySelector('#vector-tool-button');
 const vectorToolContent = document.querySelector('.vector-tool-sub-category');
 
@@ -89,6 +91,13 @@ const brushToolContent = document.querySelector('.brush-tool-sub-category');
 
 const shapeToolButton = document.querySelector('#shape-tool-button');
 const shapeToolContent = document.querySelector('.shape-tool-sub-category');
+
+//Select tool hide other menus
+selectToolButton.addEventListener('click', function() {
+  brushToolContent.style.display = 'none';
+  shapeToolContent.style.display = 'none';
+  vectorToolContent.style.display = 'none';
+});
 
 //Vector tool show/hide
 vectorToolButton.addEventListener('click', function() {

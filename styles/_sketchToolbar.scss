@@ -1,7 +1,9 @@
 $background-color: #F6F2F2;
 $canvas-background-color: #C1E7FF;
-$sketch-menu-background-color: #1286E1;
+$sketch-menu-background-color: #1286e1;
 $sketch-menu-icon-color:#C1E7FF;
+$icon-width: 40px;
+$icon-background: rgba(18, 134, 225, 50);
 
 @mixin p {
   font-family: 'helvetica-neue', sans-serif;
@@ -11,7 +13,6 @@ $sketch-menu-icon-color:#C1E7FF;
 } 
 
 @mixin svg {
-  // box-sizing: border-box;
   max-width: 100%;
   padding: 15%;
   margin: 0;
@@ -41,6 +42,8 @@ $sketch-menu-icon-color:#C1E7FF;
       }
       .vector-tool-sub-category {
         display: none;
+        width: $icon-width;
+        background-color: $icon-background;
         z-index: 10;
       }
     }
@@ -50,6 +53,8 @@ $sketch-menu-icon-color:#C1E7FF;
       }
       .brush-tool-sub-category {
         display: none;
+        width: $icon-width;
+        background-color: $icon-background;
         z-index: 10;
       }
     }
@@ -59,6 +64,8 @@ $sketch-menu-icon-color:#C1E7FF;
       }
       .shape-tool-sub-category {
         display: none;
+        width: $icon-width;
+        background-color: $icon-background;
         z-index: 10;
       }
     }

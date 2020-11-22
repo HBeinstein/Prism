@@ -107,24 +107,18 @@ bindSketchEvents()
 
 function bindSketchEvents() {
   const doc = sketch.doc;
-  doc.handleResize = function () {
-    
-  };
+
   // const docWidth = doc.pixelWidth;
   console.log(doc);
   if (typeof doc.on !== "undefined") {
     doc.setBackground('#C1E7FF')
+    //ADD DEFAULT SCENE HERE
     doc.on('change', async packet => {
-      // console.log(packet)
+      console.log(packet)
       if (packet.op === "HISTORY_STORE") {
         await updateKaleidoscope()
       }
     })
-
-  // window.addEventListener('resize', (event) => {
-  //   console.log(event)
-  //   bindSketchEvents();
-  // })
 
   } else {
     setTimeout(bindSketchEvents, 250)
@@ -139,7 +133,6 @@ async function updateKaleidoscope() {
 }
 
 //Resize function
-
 function onResize() {
 
 }
