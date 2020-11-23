@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/js/scripts.js',
@@ -20,6 +21,10 @@ module.exports = {
       template: './src/index.html',
       inject: 'body'
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     new CopyPlugin({
       patterns: [
         { from: 'sketch', to: 'sketch' }
@@ -31,36 +36,40 @@ module.exports = {
     {
       test: /\.s[ac]ss$/i,
       use: [
-        // Creates `style` nodes from JS strings
         "style-loader",
-        // Translates CSS into CommonJS
         "css-loader",
-        // Compiles Sass to CSS
         "sass-loader",
       ],
     },
     {
       test: /\.css$/,
-      use: ["style-loader", "css-loader"],
+      use: [
+      "style-loader", 
+      "css-loader"
+      ],
     },
     {
       test: /\.(png|jpe?g|gif)$/i,
       use: [
         {
-          loader: 'file-loader',
+          loader: 'file-loader?name=[name].[ext]',
         },
       ],
     },
-    {
-      test: /\.m?js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env']
-        }
-      }
-    },
+    // {
+    //   test: /\.(js|jsx)$/,
+    //   exclude: /node_modules/,
+    //   loader: "babel-loader",
+    //   options: {
+    //     presets: [
+    //         '@babel/preset-env',
+    //         '@babel/preset-'
+    //     ],
+    //     plugins: [
+    //         '@babel/transform-runtime'
+    //     ]
+    //   }
+    // }
   ],
   }
 };

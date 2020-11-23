@@ -14,6 +14,7 @@ $sketch-menu-color: #1286E1;
 
 body {
   background-color: $background-color;
+  overflow-y: hidden;
   #app-container {
     display: grid;
     grid-template-rows: 100vh;

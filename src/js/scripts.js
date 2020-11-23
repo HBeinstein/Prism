@@ -1,10 +1,54 @@
 import "./../styles/styles.scss";
 import "./sketchToolbar.js";
 import "./kaleidoscopeToolbar.js";
-// import './../styles/styles.css';
-// import './../assets/spectrum.css';
-import './../styles/styles.scss';
-// import './../assets/IMG/sample2.jpg';
+import './../styles/spectrum.css';
+import $ from 'jquery';
+// import {segments, animationSpeed} from './kaleidoscopeToolbar.js'
+import "spectrum-colorpicker";
+import './../assets/IMG/sample2.jpg';
+// require('spectrum-colorpicker');
+// const spectrumColorpicker = require("spectrum-colorpicker");
+
+
+// KALEIDOSCOPE TOOLBAR
+//Segments slider
+let segments = document.getElementById('mirror-slider').value;
+const segmentSlider = document.getElementById('mirror-slider');
+segmentSlider.addEventListener('input', updateSegments);
+
+//View slider
+let viewVal = document.getElementById('view-slider').value;
+const viewSlider = document.getElementById('view-slider');
+viewSlider.style.display = 'none';
+viewSlider.addEventListener('input', updateKaleidoscopeView);
+
+//Animation speed slider
+export let animationSpeed = document.getElementById('speed-slider').value;
+const speedSlider = document.getElementById('speed-slider');
+speedSlider.addEventListener('input', updateSpeed);
+
+// Play/pause button
+function updatePlayButtonView() {
+  animating = !animating;
+  console.log(animating);
+  if(animating) {
+    viewSlider.style.display = 'none';
+    speedSlider.style.display = 'inline';
+    pauseButton.style.display = 'inline';
+    playButton.style.display = 'none';
+  } else {
+    viewSlider.style.display = 'inline';
+    speedSlider.style.display = 'none';
+    playButton.style.display = 'inline';
+    pauseButton.style.display = 'none';
+  }
+  updateRender();
+};
+
+let pauseButton = document.getElementById('pause-button')
+pauseButton.addEventListener('click', updatePlayButtonView);
+let playButton = document.getElementById('play-button')
+playButton.addEventListener('click', updatePlayButtonView);
 
 //KALEIDSCOPE CANVAS
 
@@ -18,10 +62,10 @@ function updateRender() {
   const x3 = radius * sin(mirrorAngle);
   const x4 = radius * sin(mirrorAngle/2);
 
-  y1 = -1;
-  y2 = radius;
-  y3 = radius * cos(mirrorAngle);
-  y4 = radius * cos(mirrorAngle/2);
+  const y1 = -1;
+  const y2 = radius;
+  const y3 = radius * cos(mirrorAngle);
+  const y4 = radius * cos(mirrorAngle/2);
     
   for(let i=0; i<segments; i++) {
     //Non-mirrored segment
@@ -39,7 +83,7 @@ function updateRender() {
 
     //Mirrored segment
     ctx.translate(w/2, h/2);
-    ctx.rotate((i-1) * mirrorAngle);
+    ctx.rotate((i-1) * mirrorAngle); 
     ctx.scale(-1, 1);
     ctx.translate(offset.x, offset.y);
     ctx.beginPath();
@@ -60,7 +104,7 @@ function updateRender() {
 }
 
 //Updates kaleidoscope segments when slider is moved
-function updateSegments() {
+export function updateSegments() {
   segments = document.getElementById('mirror-slider').value;
   if(!animating) {
     updateRender();
@@ -68,7 +112,7 @@ function updateSegments() {
 };
 
 //Updates kaleidoscope view when slider is moved. Only available when animation is paused.
-function updateKaleidoscopeView() { 
+export function updateKaleidoscopeView() { 
   if(!animating){
     viewVal = document.getElementById('view-slider').value;
     offset.x = viewVal;
@@ -78,7 +122,7 @@ function updateKaleidoscopeView() {
 };
 
 //Updates kaleidoscope animation speed when slider is moved. Only available when animation is playing.
-function updateSpeed() {
+export function updateSpeed() {
   if(animating) {
     animationSpeed = parseInt(document.getElementById('speed-slider').value);
   }
@@ -92,6 +136,10 @@ const ctx = canvas.getContext('2d');
 let w = canvas.width = canvasDimensions;
 let h = canvas.height = canvasDimensions;
 const {PI,sin,cos} = Math;
+const offset = {
+  x: 150, 
+  y: 100
+};
 
 let animating = true;
 
@@ -102,7 +150,7 @@ ctx.arc(kaleidoscopeSize, kaleidoscopeSize, kaleidoscopeSize * 0.8, 0, 2 * PI);
 ctx.clip();
 
 const img = new Image();
-img.src = "./assets/IMG/sample2.jpg"; 
+img.src = "./sample2.jpg"; 
 let pattern;
 img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');

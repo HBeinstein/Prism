@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import "spectrum-colorpicker";
 
 // Functions that update color and tool
 function getCurrentColor() {
