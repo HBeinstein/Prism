@@ -1,3 +1,11 @@
+import "./../styles/styles.scss";
+import "./sketchToolbar.js";
+import "./kaleidoscopeToolbar.js";
+// import './../styles/styles.css';
+// import './../assets/spectrum.css';
+import './../styles/styles.scss';
+// import './../assets/IMG/sample2.jpg';
+
 //KALEIDSCOPE CANVAS
 
 //Function to update kaleidoscope rendering

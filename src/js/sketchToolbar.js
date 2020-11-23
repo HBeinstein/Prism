@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 // Functions that update color and tool
 function getCurrentColor() {
   return {fill: $('#fill-color-picker').spectrum('get').toHexString(), stroke: $('#stroke-color-picker').spectrum('get').toHexString()};

@@ -1,2 +1,4 @@
 styles.css
 styles.css.map
+dist/
+node_modules
