@@ -27,6 +27,17 @@ Gesture.on($selectButton, 'click', () => {
 	sketch.setTool('select');
 });
 
+//Vector Tool
+const $pathButton = dom.$('#path');
+Gesture.on($pathButton, 'click', () => {
+  setCurrentTool('path')
+});
+
+const $polylineButton = dom.$('#polyline');
+Gesture.on($polylineButton, 'click', () => {
+  setCurrentTool('polyline')
+});
+
 //Brush Tool
 const $pencilButton = dom.$('#pencil');
 Gesture.on($pencilButton, 'click', () => {

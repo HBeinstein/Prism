@@ -3,9 +3,10 @@ $canvas-background-color: #C1E7FF;
 $sketch-menu-color: #1286E1;
 
 @mixin p {
-  font-family: 'helvetica neue', sans-serif;
-  font-weight: 500;
-  font-size: 1.5vw;
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  // font-style: italic;
   color: $sketch-menu-color;
 } 
 
@@ -50,7 +51,7 @@ $sketch-menu-color: #1286E1;
   #prism {
     position: absolute;
     bottom: 30px;
-    right: -2px;
+    right: -10px;
     transform: rotate(270deg);
   }
 }
