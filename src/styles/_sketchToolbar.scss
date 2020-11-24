@@ -16,7 +16,8 @@ $icon-background: rgba(18, 134, 225, 50);
   max-width: 100%;
   padding: 15%;
   margin: 0;
-  border: rgba(0,0,0,0);
+  // border: rgba(0,0,0,0);
+  position: relative;
   fill: $background-color;
   :hover {
     opacity: 50%;
