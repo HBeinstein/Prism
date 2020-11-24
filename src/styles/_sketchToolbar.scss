@@ -4,6 +4,7 @@ $sketch-menu-background-color: #1286e1;
 $sketch-menu-icon-color:#C1E7FF;
 $icon-width: 40px;
 $icon-background: rgba(18, 134, 225, 50);
+$mainButtonPos: inline;
 
 @mixin p {
   font-family: 'helvetica-neue', sans-serif;
@@ -19,10 +20,6 @@ $icon-background: rgba(18, 134, 225, 50);
   // border: rgba(0,0,0,0);
   position: relative;
   fill: $background-color;
-  :hover {
-    opacity: 50%;
-    cursor: pointer;
-  }
 }
 
 #sketch-toolbar {
@@ -32,14 +29,28 @@ $icon-background: rgba(18, 134, 225, 50);
   align-content: center;
   background-color: $sketch-menu-background-color;
   #toolbar-top {
+    .tool-tip-right {
+      position: relative;
+    }
     #select-tool-category {
       svg {
         @include svg;
+      }
+      :first-child:hover {
+        opacity: 50%;
+        cursor: pointer;
       }
     }
     #vector-tool-category {
       svg {
         @include svg;
+      }
+      #vector-tool-button{
+        display: $mainButtonPos;
+      }
+      :first-child:hover {
+        opacity: 50%;
+        cursor: pointer;
       }
       .vector-tool-sub-category {
         display: none;
@@ -52,6 +63,13 @@ $icon-background: rgba(18, 134, 225, 50);
       svg {
         @include svg;
       }
+      #brush-tool-button{
+        display: $mainButtonPos;
+      }
+      :first-child:hover {
+        opacity: 50%;
+        cursor: pointer;
+      }
       .brush-tool-sub-category {
         display: none;
         width: $icon-width;
@@ -62,6 +80,13 @@ $icon-background: rgba(18, 134, 225, 50);
     #shape-tool-category {
       svg {
         @include svg;
+      }
+      #shape-tool-button{
+        display: $mainButtonPos;
+      }
+      :first-child:hover {
+        opacity: 50%;
+        cursor: pointer;
       }
       .shape-tool-sub-category {
         display: none;

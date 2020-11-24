@@ -1,24 +1,25 @@
-// svg::after {
-//     background-color: #333;
-//     border-radius: 10px;
-//     color: #b254ff;
-//     display: none;
-//     padding: 10px 15px;
-//     position: absolute;
-//     text-align: center;
-//     z-index: 100;
-// } 
+@mixin tool-tip {
+      background-color: #333;
+      border-radius: 10px;
+      color: #9b22fd;
+      display: none;
+      padding: 10px 15px;
+      position: absolute;
+      text-align: center;
+      z-index: 11;
 
-// .tool-tip-right::after {
-//   content: 'seladfsdgdsect';
-//   top: 0;
-//   right: 0;
-//   transform: translateX(calc(100% + 10px));
-// }
-
-#select-tool-button::after {
-  // display: block;
-  border: 2px solid red;
-  z-index: 100;
-  content: 'sup';
 }
+
+.tool-tip-right::after {
+  @include tool-tip;
+  content: 'select';
+  top: 0;
+  left: 0;
+  // transform: translateX(calc(100% + 10px));
+}
+
+.tool-tip-right:hover::after {
+  display: inline-block;
+
+}
+
