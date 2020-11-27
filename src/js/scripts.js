@@ -3,12 +3,9 @@ import "./sketchToolbar.js";
 import "./kaleidoscopeToolbar.js";
 import './../styles/spectrum.css';
 import $ from 'jquery';
-// import {segments, animationSpeed} from './kaleidoscopeToolbar.js'
 import "spectrum-colorpicker";
 import './../assets/IMG/sample2.jpg';
-// require('spectrum-colorpicker');
-// const spectrumColorpicker = require("spectrum-colorpicker");
-
+import './../assets/IMG/default-img-2.png';
 
 // KALEIDOSCOPE TOOLBAR
 //Segments slider
@@ -137,8 +134,8 @@ let w = canvas.width = canvasDimensions;
 let h = canvas.height = canvasDimensions;
 const {PI,sin,cos} = Math;
 const offset = {
-  x: 150, 
-  y: 100
+  x: .5, 
+  y: .5
 };
 
 let animating = true;
@@ -164,11 +161,13 @@ bindSketchEvents()
 function bindSketchEvents() {
   const doc = sketch.doc;
 
-  // const docWidth = doc.pixelWidth;
   console.log(doc);
   if (typeof doc.on !== "undefined") {
-    doc.setBackground('#C1E7FF')
-    //ADD DEFAULT SCENE HERE
+    doc.setBackground('#FFFFFF');
+    doc.addLayer({
+      type: "image",
+      src: './default-img-2.png'
+    });
     doc.on('change', async packet => {
       console.log(packet)
       if (packet.op === "HISTORY_STORE") {
@@ -188,7 +187,44 @@ async function updateKaleidoscope() {
   pattern = ctx.createPattern(sketchCanvas, 'repeat')
 }
 
-//Resize function
-function onResize() {
+//Hide sketch canvas
+const hideBtn = document.querySelector('#hide-btn');
+const showBtn = document.querySelector('#show-btn');
+const sketchCanvasContainer = document.querySelector('#sketch-canvas-container');
+const kaleidoscopeCanvasContainer = document.querySelector('#kaleidoscope-canvas-container');
+const sketchToolbar = document.querySelector('#sketch-toolbar');
 
-}
+hideBtn.addEventListener('click', function() {
+  sketchCanvasContainer.style.display = 'none';
+  sketchToolbar.style.display = 'none';
+  kaleidoscopeCanvasContainer.style.gridColumn = '2 / span 2';
+  showBtn.style.display = 'block';
+  hideBtn.style.display = 'none';
+
+  const styles = {
+    width: '50%',
+    height: '50%',
+    top: '25%',
+    left: '25%'
+  }
+  Object.assign(canvas.style, styles);
+});
+
+//Show Sketch canvas
+showBtn.addEventListener('click', function() {
+  sketchCanvasContainer.style.display = 'block';
+  sketchToolbar.style.display = 'block';
+  kaleidoscopeCanvasContainer.style.gridColumn = '3';
+
+  const styles = {
+    width: '100%',
+    height: '100%',
+    top: '0',
+    left: '0'
+  }
+  Object.assign(canvas.style, styles);
+
+  showBtn.style.display = 'none';
+  hideBtn.style.display = 'block';
+});
+

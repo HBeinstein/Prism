@@ -1,4 +1,6 @@
-$background-color: #F6F2F2;
+@import './inputRange';
+
+$background-color: #ECE1FD;
 $canvas-background-color: #C1E7FF;
 $sketch-menu-color: #1286E1;
 
@@ -36,7 +38,7 @@ $sketch-menu-color: #1286E1;
   #input-container {
     display: flex;
     gap: 4rem;
-    transform: rotate(270deg) translateX(25px); //Is there a better way than translate to get absolute vertical center?
+    transform: rotate(270deg) translateX(25px);
     justify-content: center;
     transform-origin: center left;
     margin-left: 50%;

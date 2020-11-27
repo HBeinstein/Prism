@@ -1,9 +1,7 @@
-$background-color: #F6F2F2;
-$canvas-background-color: #C1E7FF;
-$sketch-menu-background-color: #1286e1;
-$sketch-menu-icon-color:#C1E7FF;
-$icon-width: 40px;
-$icon-background: rgba(18, 134, 225, 50);
+$sketch-menu-background-color: #002341;
+$icon-background: #002341;
+$sketch-menu-icon-color: #F6F2F2;
+$icon-width: 45px;
 $mainButtonPos: inline;
 
 @mixin p {
@@ -17,9 +15,8 @@ $mainButtonPos: inline;
   max-width: 100%;
   padding: 15%;
   margin: 0;
-  // border: rgba(0,0,0,0);
   position: relative;
-  fill: $background-color;
+  fill: $sketch-menu-icon-color;
 }
 
 #sketch-toolbar {
@@ -100,7 +97,7 @@ $mainButtonPos: inline;
     justify-self: flex-end;
     position: absolute;
     bottom: 2px;
-    left: 3.5px;
+    left: 4.75px;
   }
   .color-picker {
     margin: 15px 0;

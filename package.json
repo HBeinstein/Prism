@@ -8,7 +8,9 @@
     "start": "npm run build; webpack-dev-server --open --mode development",
     "lint": "eslint src/*.js",
     "test": "jest",
-    "debug": "node --inspect node_modules/.bin/jest --runInBand"
+    "debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "deploy": "./deploy.sh",
+    "buildDeploy": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/SketchIO/intern-project-kaleidoscope/issues"
   },
-  "homepage": "https://github.com/SketchIO/intern-project-kaleidoscope#readme",
+  "homepage": "https://github.com/SketchIO/intern-project-kaleidoscope",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "jquery": "^3.5.1",

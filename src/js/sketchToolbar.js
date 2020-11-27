@@ -142,7 +142,7 @@ shapeToolButton.addEventListener('click', function() {
 
 //Color-picker
 $("#fill-color-picker").spectrum({
-  color: "#E484B7",
+  color: "#D3C3FC",
   showInitial: true,
   showInput: true,
   palette: palette,
@@ -158,7 +158,7 @@ $("#fill-color-picker").spectrum({
 });
 
 $("#stroke-color-picker").spectrum({
-  color: 0,
+  color: "#2981FF",
   showInitial: true,
   showInput: true,
   palette: palette,

@@ -2,25 +2,64 @@
 @import './_sketchToolbar';
 @import './toolTips';
 
-$background-color: #F6F2F2;
-$canvas-background-color: #C1E7FF;
-$sketch-menu-color: #1286E1;
+$background-color: #ECE1FD;
+$canvas-background-color: #F6F2F2;
+
+html {
+  overflow: hidden !important;
+}
 
 body {
   background-color: $background-color;
-  overflow-y: hidden;
+  overflow: hidden !important;
   #app-container {
     display: grid;
     grid-template-rows: 100vh;
-    grid-template-columns: 40px 1fr 1fr 40px;
-    #kaleidoscope-canvas-container {
-      background-color: $background-color;
+    grid-template-columns: 45px 1fr 1fr 45px;
     }
-    #sketch-canvas-container {
-      .ps__rail-y {
+    #kaleidoscope-canvas-container {
+      align-self: center;
+      background-color: $background-color;
+      height: 0;
+      padding-top: 100%;
+      position: relative;
+      #canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+      #show-btn {
+        transform: rotate(180deg);
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 50%;
+        left: -2%;
         display: none;
       }
     }
-  }
+    #sketch-canvas-container {
+      background-color: $background-color;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+      .ps__rail-y {
+        display: none;
+      }
+      #sketch-canvas {
+
+      }
+      #hide-btn {
+        z-index: 10;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 50%;
+        right: 0;
+      }
+    }
 }
+
 
