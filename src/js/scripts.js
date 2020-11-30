@@ -2,6 +2,7 @@ import $ from 'jquery';
 import "spectrum-colorpicker";
 import "./../styles/styles.scss";
 import './../styles/spectrum.css';
+import "./loading.js";
 import "./sketchToolbar.js";
 import "./kaleidoscopeToolbar.js";
 import './../assets/IMG/logo.png';
