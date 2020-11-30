@@ -1,9 +1,11 @@
-import "./../styles/styles.scss";
-import "./sketchToolbar.js";
-import "./kaleidoscopeToolbar.js";
-import './../styles/spectrum.css';
 import $ from 'jquery';
 import "spectrum-colorpicker";
+import "./../styles/styles.scss";
+import './../styles/spectrum.css';
+// import './loading.js'
+import "./sketchToolbar.js";
+import "./kaleidoscopeToolbar.js";
+import './../assets/IMG/logo.png';
 import './../assets/IMG/sample2.jpg';
 import './../assets/IMG/default-img-2.png';
 
@@ -47,6 +49,8 @@ pauseButton.addEventListener('click', updatePlayButtonView);
 let playButton = document.getElementById('play-button')
 playButton.addEventListener('click', updatePlayButtonView);
 
+
+
 //KALEIDSCOPE CANVAS
 
 //Function to update kaleidoscope rendering
@@ -66,7 +70,7 @@ function updateRender() {
     
   for(let i=0; i<segments; i++) {
     //Non-mirrored segment
-    ctx.translate(w/2, h/2); //move to center of canvas
+    ctx.translate(w/2, h/2);
     ctx.rotate(i * mirrorAngle); //angle path depending on segment angle, multiplied by segment #
     ctx.translate(offset.x, offset.y); 
     ctx.beginPath();
@@ -79,7 +83,7 @@ function updateRender() {
     ctx.resetTransform();
 
     //Mirrored segment
-    ctx.translate(w/2, h/2);
+    ctx.translate(w/2, h/2); //move to center of canvas
     ctx.rotate((i-1) * mirrorAngle); 
     ctx.scale(-1, 1);
     ctx.translate(offset.x, offset.y);
@@ -139,7 +143,6 @@ const offset = {
 };
 
 let animating = true;
-
 const kaleidoscopeSize = canvasDimensions / 2
 ctx.beginPath();
 
@@ -151,17 +154,15 @@ img.src = "./sample2.jpg";
 let pattern;
 img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');
+  console.log(img.width, img.height);
   updateRender();
 }
 
 //SKETCH API & KAlEIDOSCOPE INTERACTIONS
-//Connects SketchAPI to Kaleidoscope rendering. BindSketchEvents() needs to be called at boot. 
-bindSketchEvents()
+bindSketchEvents() 
 
 function bindSketchEvents() {
   const doc = sketch.doc;
-
-  console.log(doc);
   if (typeof doc.on !== "undefined") {
     doc.setBackground('#FFFFFF');
     doc.addLayer({
@@ -180,11 +181,14 @@ function bindSketchEvents() {
   }
 }
 
+
+
 async function updateKaleidoscope() {
-  const sketchCanvas = await sketch.save.canvas()
-  const canvas = document.querySelector("#canvas")
-  const ctx = canvas.getContext('2d')
-  pattern = ctx.createPattern(sketchCanvas, 'repeat')
+  const sketchCanvas = await sketch.save.canvas();
+  // sketchCanvas.width = 600;
+  // sketchCanvas.height= 600;
+  console.log(sketchCanvas.width, sketchCanvas.height);
+  pattern = ctx.createPattern(sketchCanvas, 'repeat');
 }
 
 //Hide sketch canvas

@@ -17,6 +17,8 @@ $sketch-menu-color: #1286E1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  grid-row: 1;
+  grid-column: 4;
   p {
     @include p;
   }
@@ -24,13 +26,16 @@ $sketch-menu-color: #1286E1;
     width: 30vh;
   }
   button {
+    color: $sketch-menu-color;
+    border: 1px solid $sketch-menu-color;
     border-radius: 50%;
     height: 30px;
     width: 30px;
-    border: none;
+    background-color: rgba(0,0,0,0);
     align-self: center;
     text-decoration: none;
     text-align: center;
+    text-justify: center;
   }
   button:focus {
     outline: 0;
@@ -46,6 +51,7 @@ $sketch-menu-color: #1286E1;
   }
   #play-button {
     display: none;
+    padding-left: 9px;
   }
   #pause-button {
     font-size: .5rem;

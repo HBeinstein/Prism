@@ -25,6 +25,8 @@ $mainButtonPos: inline;
   flex-direction: column;
   align-content: center;
   background-color: $sketch-menu-background-color;
+  grid-row: 1;
+  grid-column: 1;
   #toolbar-top {
     .tool-tip-right {
       position: relative;
@@ -97,7 +99,7 @@ $mainButtonPos: inline;
     justify-self: flex-end;
     position: absolute;
     bottom: 2px;
-    left: 4.75px;
+    left: 6.5px;
   }
   .color-picker {
     margin: 15px 0;

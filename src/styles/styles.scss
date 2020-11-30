@@ -4,6 +4,7 @@
 
 $background-color: #ECE1FD;
 $canvas-background-color: #F6F2F2;
+$btn: #002341;
 
 html {
   overflow: hidden !important;
@@ -16,13 +17,26 @@ body {
     display: grid;
     grid-template-rows: 100vh;
     grid-template-columns: 45px 1fr 1fr 45px;
-    }
+    visibility: hidden;
+    // #load-screen {
+    //   width: 100vw;
+    //   height: 100vh;
+    //   grid-row: 1;
+    //   grid-column: 1 / span 4;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   background-color: white;
+    //   z-index: 100;
+    // }
     #kaleidoscope-canvas-container {
       align-self: center;
       background-color: $background-color;
       height: 0;
       padding-top: 100%;
       position: relative;
+      grid-row: 1;
+      grid-column: 3;
       #canvas {
         position: absolute;
         width: 100%;
@@ -38,6 +52,7 @@ body {
         top: 50%;
         left: -2%;
         display: none;
+        fill: $btn;
       }
     }
     #sketch-canvas-container {
@@ -45,11 +60,10 @@ body {
       overflow: hidden;
       position: relative;
       box-sizing: border-box;
+      grid-row: 1;
+      grid-column: 2;
       .ps__rail-y {
         display: none;
-      }
-      #sketch-canvas {
-
       }
       #hide-btn {
         z-index: 10;
@@ -58,8 +72,10 @@ body {
         height: 25px;
         top: 50%;
         right: 0;
+        fill: $btn;
       }
     }
+  }
 }
 
 
