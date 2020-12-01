@@ -152,7 +152,7 @@ ctx.arc(kaleidoscopeSize, kaleidoscopeSize, kaleidoscopeSize * 0.8, 0, 2 * PI);
 ctx.clip();
 
 const img = new Image();
-img.src = "./sample2.jpg"; 
+img.src = "./default-img-2.png"; 
 let pattern;
 img.onload = function() {
   pattern = ctx.createPattern(img, 'repeat');
@@ -201,6 +201,7 @@ const kaleidoscopeCanvasContainer = document.querySelector('#kaleidoscope-canvas
 const sketchToolbar = document.querySelector('#sketch-toolbar');
 
 hideBtn.addEventListener('click', function() {
+  // sketchCanvasContainer.className = 'sketchCanvasTransition';
   sketchCanvasContainer.style.display = 'none';
   sketchToolbar.style.display = 'none';
   kaleidoscopeCanvasContainer.style.gridColumn = '2 / span 2';

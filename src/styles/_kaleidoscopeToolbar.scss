@@ -27,8 +27,8 @@ $text-color: white;
     width: 30vh;
   }
   button {
-    color: $sketch-menu-color;
-    border: 1px solid $sketch-menu-color;
+    color: white;
+    border: 3px solid white;
     border-radius: 50%;
     height: 30px;
     width: 30px;
@@ -52,10 +52,11 @@ $text-color: white;
   }
   #play-button {
     display: none;
-    padding-left: 9px;
+    padding-left: 6.6px;
   }
   #pause-button {
     font-size: .5rem;
+    padding-left: 7.5px;
   }
   #prism {
     position: absolute;
