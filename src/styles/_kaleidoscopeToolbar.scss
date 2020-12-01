@@ -1,15 +1,16 @@
 @import './inputRange';
 
-$background-color: #ECE1FD;
+$background-color: #e3c2fb;
 $canvas-background-color: #C1E7FF;
-$sketch-menu-color: #1286E1;
+$sketch-menu-color: #3687f7;
+$text-color: white;
 
 @mixin p {
-  font-family: 'IBM Plex Mono', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  // font-style: italic;
-  color: $sketch-menu-color;
+  font-family: "Didact Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  color: $text-color;
 } 
 
 #kaleidoscope-canvas-toolbar {

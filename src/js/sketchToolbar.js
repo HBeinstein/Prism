@@ -172,3 +172,4 @@ $("#stroke-color-picker").spectrum({
     })
   }
 });
+

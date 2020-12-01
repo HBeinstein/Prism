@@ -1,13 +1,15 @@
+
+import "./../styles/styles.scss";
+import "./loading.js";
 import $ from 'jquery';
 import "spectrum-colorpicker";
-import "./../styles/styles.scss";
 import './../styles/spectrum.css';
-import "./loading.js";
 import "./sketchToolbar.js";
 import "./kaleidoscopeToolbar.js";
 import './../assets/IMG/logo.png';
 import './../assets/IMG/sample2.jpg';
 import './../assets/IMG/default-img-2.png';
+
 
 // KALEIDOSCOPE TOOLBAR
 //Segments slider
@@ -231,4 +233,3 @@ showBtn.addEventListener('click', function() {
   showBtn.style.display = 'none';
   hideBtn.style.display = 'block';
 });
-

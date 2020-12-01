@@ -2,7 +2,7 @@
 @import './_sketchToolbar';
 @import './toolTips';
 
-$background-color: #ECE1FD;
+$background-color: #e3c2fb;
 $canvas-background-color: #F6F2F2;
 $btn: #002341;
 
@@ -17,6 +17,18 @@ body {
     display: grid;
     grid-template-rows: 100vh;
     grid-template-columns: 45px 1fr 1fr 45px;
+    // visibility: hidden;
+    #load-screen {
+      width: 100vw;
+      height: 100vh;
+      grid-row: 1;
+      grid-column: 1 / span 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      z-index: 100;
+    }
     #kaleidoscope-canvas-container {
       align-self: center;
       background-color: $background-color;
